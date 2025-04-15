@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>SkyBrasil - Adicionar Viagem</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://horabrasilia.com.br/wp-content/uploads/2020/10/aeroportos-1.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            width: 50%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            color: black;
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 10px;
+            width: 50%;
+            border: none;
+            border-radius: 5px;
+        }
+        input, select {
+            background: #ffffff;
+        }
+        button {
+            background: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        h2 {
+            font-size: 24px;
+            color: #007BFF;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            color: #007BFF;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🌍 SkyWorld - Nova Viagem</h2>
+        <p>Cadastre uma nova viagem no sistema</p>
+        <form id="loginForm" action ="/cadastro-viagem" method="post">
+            <input type="text" id="destino" name="destino" placeholder="Coloque aonde voce deseja ir" required>
+            <input type="date" id="data" name="data" placeholder="Data da viagem" required>
+            <input type="text" id="preco" name="preco" placeholder="Preço da viagem" required>
+            <input type="number" id="vagas" name="vagas" placeholder="numero de pessoas que irao vir" required>
+
+            <button type="submit">Adicionar Viagem</button>
+            <p id="error-message" style="color:red; display:none;">Preencha todos os campos!</p>
+        </form>
+    </div>
+</body>
+</html>

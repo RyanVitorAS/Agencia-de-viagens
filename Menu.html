@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viaje pelo Brasil!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;            
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: hwb(210 0% 60%);
+            padding: 15px 50px;
+            color: white;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .menu {
+            display: flex;
+            gap: 30px;
+        }
+        .btn {
+            border: 2px solid #ffffff;
+            background: white;
+            color: hwb(210 0% 60%);
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover, .btn.active {
+            background-color: hwb(210 0% 60%);
+            color: white;
+        }
+        .banner {
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: rgb(255, 255, 255);
+            text-shadow: 3px 3px 4px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            background-size: cover;
+            background-position: center;
+        }
+        .banner h1 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+        #destinos {
+            padding: 50px;
+            text-align: center;
+        }
+        .destinos-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .destino-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 250px;
+        }
+        .destino-card img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .destino-card h3 {
+            margin: 10px 0;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">SkyGlobal</div>
+        <div class="menu">
+            <button class="btn" id="btnAdicionar">Adicionar Viagem</button>
+            <button class="btn" id="btnRegistro">Registro de Viagens</button>
+        </div>
+    </header>
+    
+    <section class="banner">
+        <h1>Descubra os Melhores Destinos pelo Brasil</h1>
+    </section>
+    
+    <section id="destinos">
+        <h2>Destinos Populares</h2>
+        <div class="destinos-container">
+            <div class="destino-card">
+                <img src="https://th.bing.com/th/id/R.1a355491917c09769bab0aa04c701bd5?rik=LepA%2b2RSpNQhaw&riu=http%3a%2f%2fwww.rioguide.com.br%2fwp-content%2fuploads%2f2017%2f07%2fArraial-do-Cabo-melhor-do-que-o-Caribe-scaled.jpeg&ehk=0UQp7KWTxI0lYJ6yX7sk5G8OyxdiSZT%2bsTrEOWDvTGk%3d&risl=&pid=ImgRaw&r=0" alt="Praia">
+                <h3>Rio de Janeiro</h3>
+                <p>Belezas naturais e cultura vibrante.</p>
+            </div>
+            <div class="destino-card">
+                <img src="https://th.bing.com/th/id/R.0772f5249103f85e2038f43c9c6319e7?rik=WTDHBSBGdiGBNQ&riu=http%3a%2f%2fwww.eldoradovoyages.com%2fwp-content%2fuploads%2f2017%2f04%2fIguassu_falls_rainbow.jpg&ehk=GchlPaWsutVpgBnWVCEXGsRuHyu7LLa5gKIao%2f4lAwY%3d&risl=&pid=ImgRaw&r=0" alt="Cataratas">
+                <h3>Foz do Iguaçu</h3>
+                <p>Um espetáculo da natureza.</p>
+            </div>
+            <div class="destino-card">
+                <img src="https://www.destinosimperdiveis.com.br/wp-content/uploads/2019/02/di_gramado03.jpg" alt="Montanha">
+                <h3>Gramado</h3>
+                <p>Clima europeu no Brasil.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Banner aleatório
+        window.onload = function () {
+            const imagens = [
+                'https://th.bing.com/th/id/R.1a355491917c09769bab0aa04c701bd5?rik=LepA%2b2RSpNQhaw&riu=http%3a%2f%2fwww.rioguide.com.br%2fwp-content%2fuploads%2f2017%2f07%2fArraial-do-Cabo-melhor-do-que-o-Caribe-scaled.jpeg&ehk=0UQp7KWTxI0lYJ6yX7sk5G8OyxdiSZT%2bsTrEOWDvTGk%3d&risl=&pid=ImgRaw&r=0',
+                'https://www.destinosimperdiveis.com.br/wp-content/uploads/2019/02/di_gramado03.jpg',
+                'https://th.bing.com/th/id/R.0772f5249103f85e2038f43c9c6319e7?rik=WTDHBSBGdiGBNQ&riu=http%3a%2f%2fwww.eldoradovoyages.com%2fwp-content%2fuploads%2f2017%2f04%2fIguassu_falls_rainbow.jpg&ehk=GchlPaWsutVpgBnWVCEXGsRuHyu7LLa5gKIao%2f4lAwY%3d&risl=&pid=ImgRaw&r=0',
+                'https://th.bing.com/th/id/R.683c0848ef3b7174847b5e8c4e115ff3?rik=OY9N2uLbG7XFfQ&riu=http%3a%2f%2fclickviajar.com.br%2fwp-content%2fuploads%2f2013%2f06%2fRio-de-Janeiro.jpg&ehk=Stu2a8iDVJhnbD6GIltbG6yc8EFpld1kQa2NAH5lqgU%3d&risl=&pid=ImgRaw&r=0'
+            ];
+            const imagemAleatoria = imagens[Math.floor(Math.random() * imagens.length)];
+            document.querySelector('.banner').style.backgroundImage = `url(${imagemAleatoria})`;
+        };
+
+        // Redirecionamento dos botões do menu
+        document.getElementById("btnAdicionar").addEventListener("click", function () {
+            window.location.href = "/Add";
+        });
+
+        document.getElementById("btnRegistro").addEventListener("click", function () {
+            window.location.href = "/registro";
+        });
+    </script>
+</body>
+</html>
