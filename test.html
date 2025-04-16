@@ -1,0 +1,114 @@
+app.get('/editar/:id', function (req, res) {
+    const id = req.params.id; // Obtém o ID do produto a ser editado da URL
+    const select = "SELECT * FROM viagens WHERE id = ?";
+
+    connection.query(select, [id], function (err, rows) {
+        if (!err) {
+            console.log("viagem encontrada com sucesso!");
+            res.send(`
+                <html>
+                    <head>
+                        <title> Editar produto </title>
+                       <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-image: url('https://horabrasilia.com.br/wp-content/uploads/2020/10/aeroportos-1.jpg');
+        background-size: cover;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.95); /* quadrado branco com leve transparência */
+        padding: 40px;
+        border-radius: 15px;
+        width: 90%;
+        max-width: 500px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+        text-align: center;
+        color: #007BFF;
+        margin-bottom: 30px;
+        font-size: 26px;
+    }
+
+    form label {
+        font-weight: bold;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    form input[type="text"],
+    form input[type="date"],
+    form input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        font-size: 15px;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .voltar {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .voltar a {
+        text-decoration: none;
+        color: #007BFF;
+        font-weight: bold;
+    }
+
+    .voltar a:hover {
+        text-decoration: underline;
+    }
+</style>
+                    </head>
+                    <body>
+                        <h1>Editar produto</h1>
+                        <form action="/editar/${id}" method="POST">
+                            <label for="destino">Destino:</label><br>
+                            <input type="text" name="destino" value="${rows[0].destino}"><br><br>
+                            <label for="data">Data:</label><br>
+                            <input type="date" name="data" value="${rows[0].data}"><br><br>
+                            <label for="preco">Preço:</label><br>
+                            <input type="text" name="preco" value="${rows[0].preco}"><br><br>
+                            <label for="vagas">Vagas:</label><br>
+                            <input type="number" name="vagas" value="${rows[0].vagas}"><br><br>
+                            <input type="submit" value="Salvar">
+                        </form>
+                    </body>
+                </html>`);
+        } else {
+            console.log("Erro ao buscar o viagem ", err);
+            res.send("Erro")
+        }
+    });
+
+});
